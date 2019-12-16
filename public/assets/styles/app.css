@@ -1,0 +1,85 @@
+:root {
+    --accent-primary: #4536bb;
+    --accent-primary-light: #c5bff3;
+    --c-bg-md: #1d1c25;
+
+    --border-radius-elements: 5px;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+body * {
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* chat */
+.chat{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-auto-rows: 1fr minmax(60px, auto);
+    grid-template-areas: 
+      "chatUsers chatMessages"
+      "chatUsers chatForm";
+    height: 100vh;
+}
+.chat__users{
+    grid-area: chatUsers;
+    background: var(--c-bg-md);
+}
+.chat__messages{
+    grid-area: chatMessages;
+    border-bottom: 1px solid var(--c-bg-md);
+}
+.chat__form{
+    grid-area: chatForm;
+}
+
+/* chat-messages */
+.chat-messages{
+    padding: 1px 10px;
+}
+.chat-messages__item{
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: var(--accent-primary-light);
+    border-radius: var(--border-radius-elements);
+}
+
+/* chat-send-form */
+.chat-send-form{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+.chat-send-form__field{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 60px;
+    padding: 10px 100px 10px 20px;
+}
+.chat-send-form__btn-send{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    height: 40px;
+    padding: 0 20px;
+    border: none;
+    border-radius: var(--border-radius-elements);
+    background: var(--accent-primary);
+    transition: all 0.3s ease-in;
+    color: #fff;
+    cursor: pointer;
+}
+.chat-send-form__btn-send:hover{
+    opacity: 0.9;
+}

@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Awesome Chat</title>
+    <link rel="stylesheet" href="assets/styles/app.css">
 </head>
 <body>
-    <p>test 3020 1</p>
 
-    <!-- форма сообщений -->
-    <form name="publish">
-        <input type="text" name="message">
-        <input type="submit" value="Отправить">
-    </form>
+    <div class="chat">
+
+        <div class="chat__users">
+
+        </div>
+
+        <div class="chat__messages">
+            <div class="chat-messages" id="subscribe">
+            <!-- здесь будут появляться входящие сообщения -->
+            </div>
+        </div>
+        
+        <div class="chat__send-form">
+            <!-- форма для отправки сообщений -->
+            <form class="chat-send-form" name="publish">
+                <input class="chat-send-form__field" type="text" name="message" placeholder="сообщение..."/>
+                <button class="chat-send-form__btn-send" type="submit"/>Отправить</button>
+            </form>
+        </div>
+    </div>
     
-    <!-- div с сообщениями -->
-    <div id="messages"></div>
-
     <script src="assets/scripts/app.js"></script>
 </body>
 </html>
