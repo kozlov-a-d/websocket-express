@@ -8,12 +8,16 @@
 </head>
 <body>
     <p>test 3020 1</p>
-    <script>
-        let socket = new WebSocket("ws://localhost:3020");
 
-        socket.onopen = function(e) {
-            socket.send("Меня зовут Джон");
-        };
-    </script>
+    <!-- форма сообщений -->
+    <form name="publish">
+        <input type="text" name="message">
+        <input type="submit" value="Отправить">
+    </form>
+    
+    <!-- div с сообщениями -->
+    <div id="messages"></div>
+
+    <script src="assets/scripts/app.js"></script>
 </body>
 </html>

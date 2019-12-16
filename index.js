@@ -2,6 +2,8 @@ var express = require('express'); // Подключаем express
 var app = express();
 var expressWs = require('express-ws')(app); // без этого не работают websocket'ы
 
+const clients = new Set();
+
 app.use(express.static(__dirname + '/public'));
 
 app.use(function (req, res, next) {
@@ -16,10 +18,21 @@ app.get('/', function(req, res, next){
 });
 
 app.ws('/', function(ws, req) {
-    ws.on('message', function(msg) {
-      console.log(msg);
+    clients.add(ws);
+
+    ws.on('connection', function connection() {
+        console.log(`connection: ${msg}`);
     });
-    console.log('socket', req.testing);
+
+    ws.on('message', function(msg) {
+        console.log(`msg: ${msg}`);
+
+        for(let client of clients) {
+            client.send(msg);
+        }
+    });
+
+    // console.log('socket', req.testing);
 });
 
 app.listen(3020);
