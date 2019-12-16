@@ -5,11 +5,28 @@ if (!window.WebSocket) {
 // создать подключение
 var socket = new WebSocket("ws://localhost:8081");
 
+var user = {
+    name: 'quest'
+}
+
+// отправить сообщение из формы publish
+document.forms.authorization.onsubmit = function() {
+    if ( this.name.value !== '' ) {
+        // var outgoingMessage = this.name.value;
+        // socket.send(outgoingMessage);
+        user.name = this.name.value;
+    }
+    return false;
+};
+
 // отправить сообщение из формы publish
 document.forms.publish.onsubmit = function() {
     if ( this.message.value !== '' ) {
         var outgoingMessage = this.message.value;
-        socket.send(outgoingMessage);
+        socket.send(JSON.stringify({
+            user: user.name,
+            msg: outgoingMessage
+        }));
         this.message.value = '';
     }
     return false;
@@ -22,9 +39,12 @@ socket.onmessage = function(event) {
 };
 
 // показать сообщение в div#subscribe
-function showMessage(message) {
+function showMessage(msg) {
+    var message = JSON.parse(msg);
     var messageElem = document.createElement('div');
     messageElem.classList.add('chat-messages__item');
-    messageElem.appendChild(document.createTextNode(message));
+    messageElem.innerHTML = `
+        <div>User <span>${message.user}</span> say:</div>
+        <div>${message.msg}</div>`;
     document.getElementById('subscribe').appendChild(messageElem);
 }
