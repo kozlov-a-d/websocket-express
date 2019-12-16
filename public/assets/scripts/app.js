@@ -44,7 +44,7 @@ function showMessage(msg) {
     var messageElem = document.createElement('div');
     messageElem.classList.add('chat-messages__item');
     messageElem.innerHTML = `
-        <div>User <span>${message.user}</span> say:</div>
-        <div>${message.msg}</div>`;
+        <div class="chat-messages__item-author">${message.user} say:</div>
+        <div class="chat-messages__item-text">${message.msg}</div>`;
     document.getElementById('subscribe').appendChild(messageElem);
 }
