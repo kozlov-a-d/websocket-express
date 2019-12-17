@@ -9,14 +9,22 @@
 </head>
 <body>
 
-    <div class="chat">
-
-        <div class="chat__users">
-            <!-- форма авторизации -->
-            <form class="auth-form" name="authorization">
+    <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <div class="modal__title">Войдите в чат</div>
+             <!-- форма авторизации -->
+             <form class="auth-form" name="authorization">
                 <input class="auth-form__field" type="text" name="name" placeholder="Ваш ник..."/>
                 <button class="auth-form__btn-send" type="submit"/>Отправить</button>
             </form>
+        </div>
+    </div>
+
+    <div class="chat">
+
+        <div class="chat__users">
+           
         </div>
 
         <div class="chat__messages">
@@ -27,13 +35,13 @@
         
         <div class="chat__send-form">
             <!-- форма для отправки сообщений -->
-            <form class="chat-send-form" name="publish">
+            <form class="chat-send-form" name="chatSend">
                 <input class="chat-send-form__field" type="text" name="message" placeholder="сообщение..."/>
                 <button class="chat-send-form__btn-send" type="submit"/>Отправить</button>
             </form>
         </div>
     </div>
     
-    <script src="assets/scripts/app.js"></script>
+    <script src="assets/scripts/app.js" type="module"></script>
 </body>
 </html>
