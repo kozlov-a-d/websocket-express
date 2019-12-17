@@ -126,6 +126,13 @@ button{
     grid-area: chatForm;
 }
 
+.chat-users{
+    padding: 10px 20px;
+}
+.chat-users__self{
+    color: #fff;
+}
+
 
 /* chat-messages */
 .chat-messages{

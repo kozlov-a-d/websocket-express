@@ -1,7 +1,10 @@
-var http = require('http');
-var Static = require('node-static');
-var WebSocketServer = new require('ws');
+const http = require('http');
+const Static = require('node-static');
+const WebSocketServer = new require('ws');
+const Router = require('./server/router');
 
+
+let router = new Router();
 // подключенные клиенты
 var clients = {};
 
@@ -13,19 +16,20 @@ webSocketServer.on('connection', function(ws) {
     clients[id] = {};
     clients[id].ws = ws;
     console.log("новое соединение " + id);
-    for(var key in clients) {
-        clients[key].ws.send(JSON.stringify({
-            user: 'System',
-            msg: "новое соединение " + id
-        }));
-    }
+    // for(var key in clients) {
+    //     clients[key].ws.send(JSON.stringify({
+    //         user: 'System',
+    //         msg: "новое соединение " + id
+    //     }));
+    // }
 
-    ws.on('message', function(message) {
-        console.log('получено сообщение ' + message);
+    ws.on('message', function(msg) {
+        router.go(ws, msg);
+        // console.log('получено сообщение ' + message);
 
-        for(var key in clients) {
-            clients[key].ws.send(message);
-        }
+        // for(var key in clients) {
+        //     clients[key].ws.send(message);
+        // }
     });
 
     ws.on('close', function() {
