@@ -1,21 +1,21 @@
 const http = require('http');
 const Static = require('node-static');
 const WebSocketServer = new require('ws');
-const Router = require('./server/router');
-
+const Router = require('./server/router/router');
+let clients = require('./server/clients');
 
 let router = new Router();
 // подключенные клиенты
-var clients = {};
+
 
 // WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});
 webSocketServer.on('connection', function(ws) {
 
-    var id = Math.random();
+    var id = Math.round(Math.random()*10000000);
     clients[id] = {};
     clients[id].ws = ws;
-    console.log("новое соединение " + id);
+    console.log("[log][connection] новое соединение " + id);
     // for(var key in clients) {
     //     clients[key].ws.send(JSON.stringify({
     //         user: 'System',
@@ -24,6 +24,7 @@ webSocketServer.on('connection', function(ws) {
     // }
 
     ws.on('message', function(msg) {
+        console.log(clients.length);
         router.go(ws, msg);
         // console.log('получено сообщение ' + message);
 
@@ -33,7 +34,7 @@ webSocketServer.on('connection', function(ws) {
     });
 
     ws.on('close', function() {
-        console.log('соединение закрыто ' + id);
+        console.log('[log][connection] соединение закрыто ' + id);
         delete clients[id];
     });
 
@@ -48,5 +49,5 @@ http.createServer(function (req, res) {
 
 }).listen(8080);
 
-console.log("Сервер запущен на портах 8080, 8081");
+console.log("[info] Сервер запущен на портах 8080, 8081");
 

@@ -1,11 +1,11 @@
 'use strict'
+let clients = require('../../clients');
 
 module.exports = class UserAuthorization {
   
     response (ws, data){
-        console.log('userAuthorization ' + data.username);
         if ( data.username ) {
-            console.log('userAuthorization - success');
+            console.log('[log][user] userAuthorization ' + data.username + ' - success');
             ws.send( JSON.stringify({
                 action: 'userAuthorized',
                 code: 200,           
@@ -19,4 +19,5 @@ module.exports = class UserAuthorization {
             ws.send( JSON.stringify(errors['400']) )
         }
     }  
+    
 }

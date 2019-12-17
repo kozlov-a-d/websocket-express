@@ -1,7 +1,7 @@
 'use strict'
 
 const UserAuthorization = require('./actions/userAuthorization') // Подключаем экшен
-const errors = require('./errors')
+const errors = require('../errors')
 
 module.exports = class Router {
   
