@@ -3,6 +3,7 @@
 import ClientIdResponse from './actions/clientIdResponse.js'; // Подключаем экшен
 import UserAuthResponse from './actions/userAuthResponse.js'; // Подключаем экшен
 import UserOnlineListResponse from './actions/userOnlineListResponse.js'; // Подключаем экшен
+import ChatMessageSend from './actions/chatMessageSend.js'; // Подключаем экшен
 
 export default class Router {
 
@@ -10,6 +11,7 @@ export default class Router {
         this.clientIdResponse = new ClientIdResponse()
         this.userAuthResponse = new UserAuthResponse()
         this.userOnlineListResponse = new UserOnlineListResponse()
+        this.chatMessageSend = new ChatMessageSend()
     }
 
     parseRequest(str) {
@@ -37,6 +39,10 @@ export default class Router {
                     
                 case 'userOnlineListResponse':
                     this.userOnlineListResponse.check(data);
+                    break                
+                    
+                case 'chatMessageSend':
+                    this.chatMessageSend.check(data);
                     break
                 
                 default: // Либо отдаём 404

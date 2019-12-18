@@ -20,11 +20,16 @@ const User = (() => {
     let getClientId = () => {
         return _self.clientId;
     };
+    
+    let getUsername = () => {
+        return _self.username;
+    };
 
     return Object.freeze({
         set,
         setClientId,
-        getClientId
+        getClientId,
+        getUsername
     })
 })();
 

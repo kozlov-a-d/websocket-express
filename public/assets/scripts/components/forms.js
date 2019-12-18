@@ -26,9 +26,11 @@ FormsInit.chatSend = () => {
         if ( this.message.value !== '' ) {
             var outgoingMessage = this.message.value;
             sendToServer({
-                user: user.name,
-                msg: outgoingMessage
+                action: "chatMessageSend",
+                username: User.getUsername(),
+                outgoingMessage: outgoingMessage
             });
+            console.log(outgoingMessage);
             this.message.value = '';
         }
         return false;

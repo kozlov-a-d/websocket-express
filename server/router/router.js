@@ -2,13 +2,15 @@
 
 const UserAuthRequest = require('./actions/userAuthRequest') // Подключаем экшен
 const UserOnlineListRequest = require('./actions/userOnlineListRequest') // Подключаем экшен
+const ChatMessageSend = require('./actions/chatMessageSend') // Подключаем экшен
 const errors = require('../errors')
 
 module.exports = class Router {
   
     constructor() {
-        this.userAuthRequest = new UserAuthRequest()
-        this.userOnlineListRequest = new UserOnlineListRequest()
+        this.userAuthRequest = new UserAuthRequest();
+        this.userOnlineListRequest = new UserOnlineListRequest();
+        this.chatMessageSend = new ChatMessageSend();
     }
     
     parseRequest(str) {
@@ -32,6 +34,10 @@ module.exports = class Router {
                     
                 case 'userOnlineListRequest': // Смотрим, есть ли у нас экшен
                     this.userOnlineListRequest.response(ws, data)
+                    break                
+                
+                case 'chatMessageSend': // Смотрим, есть ли у нас экшен
+                    this.chatMessageSend.response(ws, data)
                     break
                 
                 default: // Либо отдаём 404
