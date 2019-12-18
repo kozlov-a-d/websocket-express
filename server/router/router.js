@@ -1,12 +1,14 @@
 'use strict'
 
-const UserAuthorization = require('./actions/userAuthorization') // Подключаем экшен
+const UserAuthRequest = require('./actions/userAuthRequest') // Подключаем экшен
+const usersListAuthorized = require('./actions/usersListAuthorized') // Подключаем экшен
 const errors = require('../errors')
 
 module.exports = class Router {
   
     constructor() {
-        this.userAuthorization = new UserAuthorization()
+        this.userAuthRequest = new UserAuthRequest()
+        this.usersListAuthorized = new usersListAuthorized()
     }
     
     parseRequest(str) {
@@ -21,10 +23,15 @@ module.exports = class Router {
     
     go(ws, msg) {
         let data = this.parseRequest(msg) // Вдруг прилетел неправильный json
+        console.log('data', data)
         if( data ) {
             switch( data.action ) { 
-                case 'userAuthorization': // Смотрим, есть ли у нас экшен
-                    this.userAuthorization.response(ws, data)
+                case 'userAuthRequest': // Смотрим, есть ли у нас экшен
+                    this.userAuthRequest.response(ws, data)
+                    break 
+                    
+                case 'usersListAuthorized': // Смотрим, есть ли у нас экшен
+                    this.usersListAuthorized.response(ws, data)
                     break
                 
                 default: // Либо отдаём 404

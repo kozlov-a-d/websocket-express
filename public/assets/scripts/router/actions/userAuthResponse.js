@@ -1,14 +1,16 @@
 'use strict'
 import User from '../../user.js';
+import {sendToServer} from '../../socket.js';
 
-export default class UserAuthorized {
+export default class UserAuthResponse {
     
     check (response){
         if ( response.code === 200 ) {
-            console.log(response.data.user);
             User.set(response.data.user);
             document.querySelector('.modal').remove(); // TODO: заменить на модуль авторизации
             document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
+
+            // sendToServer({});
         } else {
             // ws.send( JSON.stringify(errors['400']) )
         }

@@ -16,21 +16,18 @@ webSocketServer.on('connection', function(ws) {
     clients[id] = {};
     clients[id].ws = ws;
     console.log("[log][connection] новое соединение " + id);
-    // for(var key in clients) {
-    //     clients[key].ws.send(JSON.stringify({
-    //         user: 'System',
-    //         msg: "новое соединение " + id
-    //     }));
-    // }
+
+    ws.send( JSON.stringify({
+        action: 'clientIdResponse',
+        code: 200,           
+        data: {
+            id: id
+        },
+    }));
+    
 
     ws.on('message', function(msg) {
-        console.log(clients.length);
         router.go(ws, msg);
-        // console.log('получено сообщение ' + message);
-
-        // for(var key in clients) {
-        //     clients[key].ws.send(message);
-        // }
     });
 
     ws.on('close', function() {
@@ -51,3 +48,10 @@ http.createServer(function (req, res) {
 
 console.log("[info] Сервер запущен на портах 8080, 8081");
 
+
+// for(var key in clients) {
+    //     clients[key].ws.send(JSON.stringify({
+    //         user: 'System',
+    //         msg: "новое соединение " + id
+    //     }));
+    // }

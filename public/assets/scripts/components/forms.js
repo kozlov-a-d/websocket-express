@@ -1,28 +1,30 @@
+import {sendToServer} from '../socket.js';
+
 let FormsInit = {};
 
 // отправить сообщение из формы publish 
 // TODO: заменить на модуль авторизации
-FormsInit.authorization = (socket) => {
+FormsInit.authorization = () => {
     document.forms.authorization.onsubmit = function() {
         if ( this.name.value !== '' ) {
-            socket.send(JSON.stringify({
-                action: "userAuthorization",  
+            sendToServer({
+                action: "userAuthRequest",  
                 username: this.name.value
-            }));
+            });
         }
         return false;
     };
 };
 
 // отправить сообщение из формы chatSend
-FormsInit.chatSend = (socket) => {
+FormsInit.chatSend = () => {
     document.forms.chatSend.onsubmit = function() {
         if ( this.message.value !== '' ) {
             var outgoingMessage = this.message.value;
-            socket.send(JSON.stringify({
+            sendToServer({
                 user: user.name,
                 msg: outgoingMessage
-            }));
+            });
             this.message.value = '';
         }
         return false;

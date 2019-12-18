@@ -2,21 +2,16 @@ if (!window.WebSocket) {
 	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
 
+import {socket} from './socket.js';
 import Router from './router/index.js';
 import './components/modal.js';
 import FormsInit from './components/forms.js';
 
 let router = new Router();
 
-// создать подключение
-var socket = new WebSocket("ws://localhost:8081");
 
-var user = {
-    name: 'quest'
-}
-
-FormsInit.authorization(socket);
-FormsInit.chatSend(socket);
+FormsInit.authorization();
+FormsInit.chatSend();
 
 
 // обработчик входящих сообщений

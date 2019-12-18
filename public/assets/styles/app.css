@@ -127,12 +127,21 @@ button{
 }
 
 .chat-users{
-    padding: 10px 20px;
-}
-.chat-users__self{
     color: #fff;
 }
-
+.chat-users__self{
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.chat-users__list{
+    padding: 10px 20px;
+}
+.chat-users__list-title{
+    margin-bottom: 5px;
+}
+.chat-users__item{
+    
+}
 
 /* chat-messages */
 .chat-messages{

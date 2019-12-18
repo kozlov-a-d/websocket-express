@@ -1,11 +1,15 @@
 'use strict'
 
-import UserAuthorized from './actions/userAuthorized.js'; // Подключаем экшен
+import ClientIdResponse from './actions/clientIdResponse.js'; // Подключаем экшен
+import UserAuthResponse from './actions/userAuthResponse.js'; // Подключаем экшен
+import UsersListAuthorized from './actions/usersListAuthorized.js'; // Подключаем экшен
 
 export default class Router {
 
     constructor() {
-        this.userAuthorized = new UserAuthorized()
+        this.clientIdResponse = new ClientIdResponse()
+        this.userAuthResponse = new UserAuthResponse()
+        this.usersListAuthorized = new UsersListAuthorized()
     }
 
     parseRequest(str) {
@@ -23,8 +27,16 @@ export default class Router {
         console.log('пришла дата ', data);
         if( data ) {
             switch( data.action ) { 
-                case 'userAuthorized': // Смотрим, есть ли у нас экшен
-                    this.userAuthorized.check(data);
+                case 'clientIdResponse': // Смотрим, есть ли у нас экшен
+                    this.clientIdResponse.check(data);
+                    break                
+                                    
+                case 'userAuthResponse': // Смотрим, есть ли у нас экшен
+                    this.userAuthResponse.check(data);
+                    break                
+                    
+                case 'usersListAuthorized':
+                    this.usersListAuthorized.check(data);
                     break
                 
                 default: // Либо отдаём 404
