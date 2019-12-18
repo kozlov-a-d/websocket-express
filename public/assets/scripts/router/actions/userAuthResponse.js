@@ -10,7 +10,10 @@ export default class UserAuthResponse {
             document.querySelector('.modal').remove(); // TODO: заменить на модуль авторизации
             document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
 
-            // sendToServer({});
+            sendToServer({
+                action: "userOnlineListRequest",  
+                data: {}
+            });
         } else {
             // ws.send( JSON.stringify(errors['400']) )
         }

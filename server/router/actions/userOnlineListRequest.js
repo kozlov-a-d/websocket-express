@@ -1,14 +1,14 @@
 'use strict'
 let clients = require('../../clients');
 
-module.exports = class UsersListAuthorized {
+module.exports = class UserOnlineListRequest {
   
     response (ws, data){
         // if ( data.username ) {
         if ( true ) {
 
             ws.send( JSON.stringify({
-                action: 'usersListAuthorized',
+                action: 'userOnlineListResponse',
                 code: 200,           
                 data: {
                     clients: clients

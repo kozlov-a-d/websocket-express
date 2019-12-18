@@ -2,14 +2,14 @@
 
 import ClientIdResponse from './actions/clientIdResponse.js'; // Подключаем экшен
 import UserAuthResponse from './actions/userAuthResponse.js'; // Подключаем экшен
-import UsersListAuthorized from './actions/usersListAuthorized.js'; // Подключаем экшен
+import UserOnlineListResponse from './actions/userOnlineListResponse.js'; // Подключаем экшен
 
 export default class Router {
 
     constructor() {
         this.clientIdResponse = new ClientIdResponse()
         this.userAuthResponse = new UserAuthResponse()
-        this.usersListAuthorized = new UsersListAuthorized()
+        this.userOnlineListResponse = new UserOnlineListResponse()
     }
 
     parseRequest(str) {
@@ -36,7 +36,7 @@ export default class Router {
                     break                
                     
                 case 'usersListAuthorized':
-                    this.usersListAuthorized.check(data);
+                    this.userOnlineListResponse.check(data);
                     break
                 
                 default: // Либо отдаём 404
