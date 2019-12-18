@@ -34,6 +34,16 @@ webSocketServer.on('connection', function(ws) {
     ws.on('close', function() {
         console.log('[log][connection] соединение закрыто ' + id);
         delete clients[id];
+
+        for(var key in clients) {
+            clients[key].ws.send(JSON.stringify({
+                action: 'userOnlineListResponse',
+                code: 200,           
+                data: {
+                    clients: clients
+                },
+            }));
+        }
     });
 
 });

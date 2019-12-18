@@ -5,7 +5,6 @@ module.exports = class UserOnlineListRequest {
   
     response (ws, data){
         if ( true ) {
-            console.log(clients);
             ws.send( JSON.stringify({
                 action: 'userOnlineListResponse',
                 code: 200,           

@@ -17,6 +17,17 @@ module.exports = class UserAuthRequest {
                     }
                 },
             }));
+
+            for(var key in clients) {
+                clients[key].ws.send(JSON.stringify({
+                    action: 'userOnlineListResponse',
+                    code: 200,           
+                    data: {
+                        clients: clients
+                    },
+                }));
+            }
+
         } else {
             ws.send( JSON.stringify(errors['400']) )
         }
