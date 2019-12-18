@@ -1,14 +1,19 @@
 'use strict'
-let clients = require('../../clients');
 
-module.exports = class UserAuthRequest {
+const BaseAction = require('./base-action');
+
+module.exports = class UserAuthRequest extends BaseAction {
+    
+    constructor() {
+        super();
+    }
   
     response (ws, data){
         if ( data.username ) {
             console.log(`[log][user] userAuthorization ${data.clientId} | ${data.username}  - success`);
             clients[data.clientId].username = data.username;
 
-            ws.send( JSON.stringify({
+            this.sender.sendToClient(ws, {
                 action: 'userAuthResponse',
                 code: 200,           
                 data: {
@@ -16,17 +21,15 @@ module.exports = class UserAuthRequest {
                         username: data.username
                     }
                 },
-            }));
+            });
 
-            for(var key in clients) {
-                clients[key].ws.send(JSON.stringify({
-                    action: 'userOnlineListResponse',
-                    code: 200,           
-                    data: {
-                        clients: clients
-                    },
-                }));
-            }
+            this.sender.sendToAllClients({
+                action: 'userOnlineListResponse',
+                code: 200,           
+                data: {
+                    clients: clients
+                },
+            });
 
         } else {
             ws.send( JSON.stringify(errors['400']) )

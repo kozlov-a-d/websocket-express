@@ -1,13 +1,11 @@
 const http = require('http');
 const Static = require('node-static');
 const WebSocketServer = new require('ws');
-const Router = require('./server/router/router');
-let clients = require('./server/clients');
+const Router = require('./server/router');
+let clients = require('./server/globals/clients');
 
 let router = new Router();
 // подключенные клиенты
-
-
 
 // WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});

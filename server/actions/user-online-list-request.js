@@ -1,17 +1,22 @@
 'use strict'
-let clients = require('../../clients');
 
-module.exports = class UserOnlineListRequest {
+const BaseAction = require('./base-action');
+
+module.exports = class UserOnlineListRequest extends BaseAction {
+
+    constructor() {
+        super();
+    }
   
     response (ws, data){
         if ( true ) {
-            ws.send( JSON.stringify({
+            this.sender.sendToClient(ws, {
                 action: 'userOnlineListResponse',
                 code: 200,           
                 data: {
                     clients: clients
                 },
-            }));
+            });
         } else {
             ws.send( JSON.stringify(errors['400']) )
         }
