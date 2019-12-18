@@ -8,6 +8,7 @@ let router = new Router();
 // подключенные клиенты
 
 
+
 // WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});
 webSocketServer.on('connection', function(ws) {

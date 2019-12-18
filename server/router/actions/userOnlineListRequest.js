@@ -4,9 +4,8 @@ let clients = require('../../clients');
 module.exports = class UserOnlineListRequest {
   
     response (ws, data){
-        // if ( data.username ) {
         if ( true ) {
-
+            console.log(clients);
             ws.send( JSON.stringify({
                 action: 'userOnlineListResponse',
                 code: 200,           

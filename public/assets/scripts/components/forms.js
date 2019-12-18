@@ -1,4 +1,5 @@
 import {sendToServer} from '../socket.js';
+import User from '../user.js';
 
 let FormsInit = {};
 
@@ -7,9 +8,12 @@ let FormsInit = {};
 FormsInit.authorization = () => {
     document.forms.authorization.onsubmit = function() {
         if ( this.name.value !== '' ) {
+            // console.log('user', User); 
+            // console.log('user', User.getClientId()); 
             sendToServer({
                 action: "userAuthRequest",  
-                username: this.name.value
+                username: this.name.value,
+                clientId: User.getClientId()
             });
         }
         return false;

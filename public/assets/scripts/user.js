@@ -14,12 +14,17 @@ const User = (() => {
     
     let setClientId = (clientId) => {
         _self.clientId = clientId;
-        console.log('User.setClientId', clientId);
-    }
+        console.log('User.setClientId',  _self.clientId);
+    }    
+    
+    let getClientId = () => {
+        return _self.clientId;
+    };
 
     return Object.freeze({
         set,
-        setClientId
+        setClientId,
+        getClientId
     })
 })();
 

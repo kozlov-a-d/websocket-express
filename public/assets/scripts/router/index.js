@@ -35,7 +35,7 @@ export default class Router {
                     this.userAuthResponse.check(data);
                     break                
                     
-                case 'usersListAuthorized':
+                case 'userOnlineListResponse':
                     this.userOnlineListResponse.check(data);
                     break
                 

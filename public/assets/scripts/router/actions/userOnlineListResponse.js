@@ -1,19 +1,18 @@
 'use strict'
 import User from '../../user.js';
 
-export default class UsersListAuthorized {
+export default class UserOnlineListResponse {
     
     check (response){
         if ( response.code === 200 ) {
-            console.log(response.data.clients);
-            document.getElementById('userList').innerHTML = (() => {
-                let result = '';
-                response.data.clients.forEach(element => {
-                    result += `<li>${element.name}</li>`;
-                });
-                console.log(result);
-                return result;
-            })
+            console.log('userOnlineListResponse', response.data.clients);
+            let clients = response.data.clients;
+            
+            let result = '';
+            for (let key in clients) {
+                result += `<li>${response.data.clients[key].username}</li>`;
+            };
+            document.getElementById('userList').innerHTML = result;
         } else {
             // ws.send( JSON.stringify(errors['400']) )
         }
