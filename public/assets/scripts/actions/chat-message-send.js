@@ -1,9 +1,13 @@
 'use strict'
-import User from '../../user.js';
 
-export default class ChatMessageSend {
+import BaseAction from './base-action.js';
+
+export default class ChatMessageSend extends BaseAction {
+    constructor() {
+        super();
+    }
     
-    check (response){
+    doAction (response){
         if ( response.code === 200 ) {
             var incomingMessage = response.data.msg;
             console.log('incomingMessage', incomingMessage);

@@ -8,7 +8,7 @@ module.exports = class ChatMessageSend extends BaseAction {
         super();
     }
   
-    response (ws, data){
+    doAction (ws, data){
         let msg = {
             user: data.username,
             msg: data.outgoingMessage

@@ -29,7 +29,7 @@ module.exports = class Router {
             // проверяем есть ли нужный action
             if (this.actions[data.action]) {
                 // если есть - выполняем его
-                this.actions[data.action].response(ws, data);
+                this.actions[data.action].doAction(ws, data);
             } else {
                 // если нет - отдаём 404
                 ws.send( JSON.stringify(errors['404']) )

@@ -8,7 +8,7 @@ module.exports = class UserOnlineListRequest extends BaseAction {
         super();
     }
   
-    response (ws, data){
+    doAction (ws, data){
         if ( true ) {
             this.sender.sendToClient(ws, {
                 action: 'userOnlineListResponse',

@@ -1,9 +1,13 @@
 'use strict'
-import User from '../../user.js';
 
-export default class UserOnlineListResponse {
+import BaseAction from './base-action.js';
+
+export default class UserOnlineListResponse extends BaseAction {
+    constructor() {
+        super();
+    }
     
-    check (response){
+    doAction (response){
         if ( response.code === 200 ) {
             console.log('userOnlineListResponse', response.data.clients);
             let clients = response.data.clients;

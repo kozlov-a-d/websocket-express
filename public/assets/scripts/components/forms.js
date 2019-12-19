@@ -1,5 +1,5 @@
-import {sendToServer} from '../socket.js';
-import User from '../user.js';
+import {sendToServer} from '../globals/socket.js';
+import User from '../globals/user.js';
 
 let FormsInit = {};
 
@@ -8,12 +8,14 @@ let FormsInit = {};
 FormsInit.authorization = () => {
     document.forms.authorization.onsubmit = function() {
         if ( this.name.value !== '' ) {
-            // console.log('user', User); 
-            // console.log('user', User.getClientId()); 
+            console.log('AuthData', {
+                clientId: User.clientId(),
+                username: this.name.value
+            }); 
             sendToServer({
                 action: "userAuthRequest",  
                 username: this.name.value,
-                clientId: User.getClientId()
+                clientId: User.clientId()
             });
         }
         return false;
@@ -27,10 +29,9 @@ FormsInit.chatSend = () => {
             var outgoingMessage = this.message.value;
             sendToServer({
                 action: "chatMessageSend",
-                username: User.getUsername(),
+                username: User.username(),
                 outgoingMessage: outgoingMessage
             });
-            console.log(outgoingMessage);
             this.message.value = '';
         }
         return false;

@@ -8,7 +8,7 @@ module.exports = class UserAuthRequest extends BaseAction {
         super();
     }
   
-    response (ws, data){
+    doAction (ws, data){
         if ( data.username ) {
             console.log(`[log][user] userAuthorization ${data.clientId} | ${data.username}  - success`);
             clients[data.clientId].username = data.username;
