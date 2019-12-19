@@ -1,8 +1,8 @@
 'use strict'
 
-import AuthorizeScreen from './authorize/authorize.js';
-import LoadingScreen from './loading/loading.js';
-import GameScreen from './game/game.js';
+import AuthorizeScreen from './authorize/index.js';
+import LoadingScreen from './loading/index.js';
+import GameScreen from './game/index.js';
 
 const ScreensManager = (() => {
     

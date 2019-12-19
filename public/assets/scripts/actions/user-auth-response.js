@@ -11,6 +11,7 @@ export default class UserAuthResponse extends BaseAction {
         if ( response.code === 200 ) {
             // если авторизация успешная
             this.user.set(response.data.user);
+            this.screensManager.changeScreensByName('GameScreen');
             // document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
 
             this.sendToServer({

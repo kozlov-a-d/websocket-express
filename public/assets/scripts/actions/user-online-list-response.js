@@ -16,7 +16,7 @@ export default class UserOnlineListResponse extends BaseAction {
             for (let key in clients) {
                 result += `<li>${response.data.clients[key].username}</li>`;
             };
-            document.getElementById('userList').innerHTML = result;
+            // document.getElementById('userList').innerHTML = result;
         } else {
             // ws.send( JSON.stringify(errors['400']) )
         }
