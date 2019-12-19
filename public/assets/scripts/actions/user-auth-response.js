@@ -9,6 +9,7 @@ export default class UserAuthResponse extends BaseAction {
     
     doAction (response){
         if ( response.code === 200 ) {
+            // если авторизация успешная
             this.user.set(response.data.user);
             // document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
 
