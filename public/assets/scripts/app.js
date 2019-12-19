@@ -4,7 +4,6 @@ if (!window.WebSocket) {
 
 import {socket} from './globals/socket.js';
 import Router from './router.js';
-import './components/modal.js';
 import ScreensManager from './screens/index.js';
 
 let router = new Router();
