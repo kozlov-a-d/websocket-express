@@ -1,0 +1,45 @@
+.loading-fullscreen{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--c-bg-overlay);
+    opacity: 0;
+    animation-name: loading-fullscreen-close;
+    animation-duration: var(--animation-time-middle);
+    animation-fill-mode: forwards;
+}
+.loading-fullscreen.a-is-show{
+    animation-name: loading-fullscreen-show;
+}
+.loading-fullscreen__container{
+    
+}
+.loading-fullscreen__img{
+
+}
+.loading-fullscreen__img img{
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+}
+.loading-fullscreen__text{
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+}
+
+@keyframes loading-fullscreen-show {
+    from { opacity: 0;  }
+    to { opacity: 1; }
+}
+@keyframes loading-fullscreen-close {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

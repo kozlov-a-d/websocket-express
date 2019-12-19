@@ -10,8 +10,7 @@ export default class UserAuthResponse extends BaseAction {
     doAction (response){
         if ( response.code === 200 ) {
             this.user.set(response.data.user);
-            document.querySelector('.modal').remove(); // TODO: заменить на модуль авторизации
-            document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
+            // document.getElementById('myUser').innerHTML = `Вы вошли как <b>${response.data.user.username}</b>`;
 
             this.sendToServer({
                 action: "userOnlineListRequest",  

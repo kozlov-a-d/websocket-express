@@ -5,14 +5,15 @@ if (!window.WebSocket) {
 import {socket} from './globals/socket.js';
 import Router from './router.js';
 import './components/modal.js';
-import FormsInit from './components/forms.js';
+import ScreensManager from './screens/index.js';
 
 let router = new Router();
 
+ScreensManager.init();
 
-FormsInit.authorization();
-FormsInit.chatSend();
-
+setTimeout(() => {
+    ScreensManager.changeScreensByName('AuthorizeScreen');
+}, 1000);
 
 // обработчик входящих сообщений
 socket.onmessage = function(event) {

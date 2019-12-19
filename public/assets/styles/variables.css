@@ -1,0 +1,11 @@
+:root {
+    --accent-primary: #4536bb;
+    --accent-primary-light: #c5bff3;
+    --c-bg-md: #1d1c25;
+    --c-bg-overlay: rgba(33, 33, 33, 0.4);;
+
+    --border-radius-elements: 5px;
+    --border-radius-blocks: 10px;
+
+    --animation-time-middle: 0.5s;
+}
