@@ -10,11 +10,11 @@ let router = new Router();
 
 ScreensManager.init();
 
-ScreensManager.changeScreensByName('GameScreen');
+// ScreensManager.changeScreensByName('GameScreen');
 
-// setTimeout(() => {
-//     ScreensManager.changeScreensByName('AuthorizeScreen');
-// }, 1000);
+setTimeout(() => {
+    ScreensManager.changeScreensByName('AuthorizeScreen');
+}, 1000);
 
 // обработчик входящих сообщений
 socket.onmessage = function(event) {

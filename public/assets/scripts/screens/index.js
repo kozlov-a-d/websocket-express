@@ -3,6 +3,7 @@
 import AuthorizeScreen from './authorize/index.js';
 import LoadingScreen from './loading/index.js';
 import GameScreen from './game/index.js';
+import ChatScreen from './chat/index.js';
 
 const ScreensManager = (() => {
     
@@ -11,6 +12,7 @@ const ScreensManager = (() => {
             AuthorizeScreen: new AuthorizeScreen(),
             LoadingScreen: new LoadingScreen(),
             GameScreen: new GameScreen(),
+            ChatScreen: new ChatScreen(),
         },
         currentScreen: null
     }

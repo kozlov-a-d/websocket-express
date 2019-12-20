@@ -1,0 +1,93 @@
+/* chat */
+.chat{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-auto-rows: 1fr minmax(60px, auto);
+    grid-template-areas: 
+      "chatUsers chatMessages"
+      "chatUsers chatForm";
+    height: 100vh;
+}
+.chat__users{
+    grid-area: chatUsers;
+    background: var(--c-bg-md);
+}
+.chat__messages{
+    grid-area: chatMessages;
+    border-bottom: 1px solid var(--c-bg-md);
+}
+.chat__form{
+    grid-area: chatForm;
+}
+
+.chat-users{
+    color: #fff;
+}
+.chat-users__self{
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.chat-users__list{
+    padding: 10px 20px;
+}
+.chat-users__list-title{
+    margin-bottom: 5px;
+}
+.chat-users__item{
+    
+}
+
+/* chat-messages */
+.chat-messages{
+    padding: 1px 20px;
+}
+.chat-messages__item{
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: var(--accent-primary-light);
+    border-radius: var(--border-radius-elements);
+}
+.chat-messages__item-author{
+    font-size: 0.9em;
+    line-height: 0.9em;
+    font-weight: 600;
+    margin-bottom: 0.1em;
+}
+.chat-messages__item-author{
+
+}
+
+/* chat-send-form */
+.chat-send-form{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+.chat-send-form__field{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 60px;
+    padding: 10px 100px 10px 20px;
+    border: none;
+}
+.chat-send-form__btn-send{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    height: 40px;
+    padding: 0 20px;
+    border: none;
+    border-radius: var(--border-radius-elements);
+    background: var(--accent-primary);
+    transition: all 0.3s ease-in;
+    color: #fff;
+    cursor: pointer;
+}
+.chat-send-form__btn-send:hover{
+    opacity: 0.9;
+}

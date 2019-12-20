@@ -16,20 +16,6 @@ export default class GameSreen extends BaseScreen {
 
     afterInit(){
         // this.root.getElementsByClassName('auth-fullscreen')[0].classList.add('a-is-show');
-
-        // отправить сообщение из формы authorization 
-        // document.forms.chatSend.onsubmit = function() {
-        //     if ( this.message.value !== '' ) {
-        //         var outgoingMessage = this.message.value;
-        //         sendToServer({
-        //             action: "chatMessageSend",
-        //             username: User.username(),
-        //             outgoingMessage: outgoingMessage
-        //         });
-        //         this.message.value = '';
-        //     }
-        //     return false;
-        // };
     }
 
     beforeFinish(){
