@@ -1,8 +1,8 @@
 'use strict'
 
-const BaseAction = require('./base-action');
+const AbstractAction = require('./base-action');
 
-module.exports = class UserAuthRequest extends BaseAction {
+module.exports = class UserAuthRequest extends AbstractAction {
     
     constructor() {
         super();

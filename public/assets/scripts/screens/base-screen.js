@@ -1,7 +1,8 @@
 export default class BaseScreen {
-    constructor() {
+    constructor(user) {
         this.isActive = false;
         this.root = document.getElementById('app');
+        this.user = user;
     }
 
     beforeInit() {

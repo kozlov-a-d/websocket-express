@@ -6,7 +6,7 @@ const Sender = require('../globals/sender');
 /**
  * ипортируются clients, errors, Sender
  */
-module.exports = class BaseAction {
+module.exports = class AbstractAction {
     
     constructor() {
         this.sender = Sender;

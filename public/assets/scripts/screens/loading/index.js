@@ -1,8 +1,8 @@
 import BaseScreen from '../base-screen.js';
 
 export default class LoadingSreen extends BaseScreen {
-    constructor() {
-        super();
+    constructor(user) {
+        super(user);
     }
 
     beforeInit(){

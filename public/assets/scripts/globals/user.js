@@ -1,48 +1,48 @@
-const User = (() => {
-
-    let _self = {
-        username: 'Guest',
-        isAuthorized: false,
-        clientId: 0,
+export default class User {
+    constructor() {
+        this.clientId = 0;
+        this.username = 'Guest';
+        this.isAuthorized = false;
     }
 
-    let set = (user) => {
-        _self.username = user.username;
-        _self.isAuthorized = user.true;
+    init(user) {
+        this.username = user.username;
+        this.isAuthorized = user.true;
         console.log('User authorized success');
+    }   
+
+    
+    /**
+     * Get user's client id
+     * @returns {Number}
+     */
+    getClientId() {
+        return this.clientId;
     }    
 
     /**
-     * Set/get client id
-     * @param {NUmber} clientId 
+     * Set user's client id
+     * @param {Number} value 
      */
-    const clientId = (clientId) => {
-        if (clientId) {
-            _self.clientId = clientId;
-            console.log(`User set client id  ${_self.clientId}`);
-        } else {
-            return _self.clientId;
-        }
+    setClientId(value) {
+        this.clientId = value;
+        console.log(`User set client id  ${this.clientId}`);
     }
-    
+
     /**
-     * Set/get username
+     * Get username
+     * @returns {String}
+     */
+    getUsername() {
+        return this.username;
+    }
+
+    /**
+     * Set username
      * @param {String} username 
      */
-    let username = (username) => {
-        if (username) {
-            _self.username = username;
-        } else {
-            return _self.username;
-        }
-        
-    };
+    setUsername(value) {
+        this.username = value;
+    }
 
-    return Object.freeze({
-        set,
-        clientId,
-        username
-    })
-})();
-
-export default User;
+}

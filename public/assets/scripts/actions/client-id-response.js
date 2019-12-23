@@ -1,15 +1,15 @@
 'use strict'
 
-import BaseAction from './base-action.js';
+import AbstractAction from './abstract-action.js';
 
-export default class ClientIdResponse extends BaseAction {
-    constructor() {
-        super();
+export default class ClientIdResponse extends AbstractAction {
+    constructor(user) {
+        super(user);
     }
     
     doAction (response){
         if ( response.code === 200 ) {
-            this.user.clientId(response.data.id);
+            this.user.setClientId(response.data.id);
         } else {
             // ws.send( JSON.stringify(errors['400']) )
         }

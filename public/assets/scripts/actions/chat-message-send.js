@@ -1,10 +1,10 @@
 'use strict'
 
-import BaseAction from './base-action.js';
+import AbstractAction from './abstract-action.js';
 
-export default class ChatMessageSend extends BaseAction {
-    constructor() {
-        super();
+export default class ChatMessageSend extends AbstractAction {
+    constructor(user) {
+        super(user);
     }
     
     doAction (response){

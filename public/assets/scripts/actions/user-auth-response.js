@@ -1,18 +1,17 @@
 'use strict'
 
-import BaseAction from './base-action.js';
+import AbstractAction from './abstract-action.js';
 
-export default class UserAuthResponse extends BaseAction {
-    constructor() {
-        super();
+export default class UserAuthResponse extends AbstractAction {
+    constructor(user) {
+        super(user);
     }
     
     doAction (response){
         if ( response.code === 200 ) {
             // если авторизация успешная
-            this.user.set(response.data.user);
+            this.user.init(response.data.user);
             this.screensManager.changeScreensByName('ChatScreen');
-
             this.sendToServer({
                 action: "userOnlineListRequest",  
                 data: {}

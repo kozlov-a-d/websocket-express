@@ -2,8 +2,8 @@ import BaseScreen from '../base-screen.js';
 import Game from './game.js';
 
 export default class GameSreen extends BaseScreen {
-    constructor() {
-        super();
+    constructor(user) {
+        super(user);
     }
 
     beforeInit(){

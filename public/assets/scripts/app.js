@@ -1,22 +1,28 @@
-if (!window.WebSocket) {
-	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
-}
+'use strict'
 
-import {socket} from './globals/socket.js';
+import User from './globals/user.js';
 import Router from './router.js';
 import ScreensManager from './screens/index.js';
 
-let router = new Router();
+export default class App {
+    constructor(){
+        this.user = new User();
+        this.router = new Router(this.user);
+        this.init();
+    }
 
-ScreensManager.init();
+    init() {
+        if (!window.WebSocket) {
+            document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
+        }
 
-// ScreensManager.changeScreensByName('GameScreen');
+        ScreensManager.init(this.user);
+        // ScreensManager.changeScreensByName('GameScreen');
+        setTimeout(() => {
+            ScreensManager.changeScreensByName('AuthorizeScreen');
+        }, 1000);
+    }
 
-setTimeout(() => {
-    ScreensManager.changeScreensByName('AuthorizeScreen');
-}, 1000);
+}
 
-// обработчик входящих сообщений
-socket.onmessage = function(event) {
-    router.go(event.data);
-};
+const app = new App();

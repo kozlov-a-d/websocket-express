@@ -8,13 +8,17 @@ import ChatScreen from './chat/index.js';
 const ScreensManager = (() => {
     
     let self = {
-        screens: {
-            AuthorizeScreen: new AuthorizeScreen(),
-            LoadingScreen: new LoadingScreen(),
-            GameScreen: new GameScreen(),
-            ChatScreen: new ChatScreen(),
-        },
+        screens: {},
         currentScreen: null
+    }
+
+    const createSceensList = (user) => {
+        self.screens = {
+            AuthorizeScreen: new AuthorizeScreen(user),
+            LoadingScreen: new LoadingScreen(user),
+            GameScreen: new GameScreen(user),
+            ChatScreen: new ChatScreen(user),
+        }
     }
 
     /**
@@ -34,7 +38,8 @@ const ScreensManager = (() => {
     /**
      * Init screen manager
      */
-    const init = () => {
+    const init = (user) => {
+        createSceensList(user);
         changeScreensByName('LoadingScreen');
     }
 

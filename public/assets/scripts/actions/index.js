@@ -5,11 +5,11 @@ import ClientIdResponse from './client-id-response.js';
 import UserAuthResponse from './user-auth-response.js';
 import UserOnlineListResponse from './user-online-list-response.js';
 
-const actions = {
-    chatMessageSend: new ChatMessageSend(),
-    clientIdResponse: new ClientIdResponse(),
-    userAuthResponse: new UserAuthResponse(),
-    userOnlineListResponse: new UserOnlineListResponse(),
-}
+const Actions = (user) => Object.freeze({
+    chatMessageSend: new ChatMessageSend(user),
+    clientIdResponse: new ClientIdResponse(user),
+    userAuthResponse: new UserAuthResponse(user),
+    userOnlineListResponse: new UserOnlineListResponse(user),
+});
 
-export default actions;
+export default Actions;

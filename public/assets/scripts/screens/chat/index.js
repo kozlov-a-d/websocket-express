@@ -3,8 +3,8 @@ import {sendToServer} from '../../globals/socket.js';
 import User from '../../globals/user.js';
 
 export default class ChatSreen extends BaseScreen {
-    constructor() {
-        super();
+    constructor(user) {
+        super(user);
     }
 
     beforeInit(){
@@ -12,10 +12,11 @@ export default class ChatSreen extends BaseScreen {
         <div class="chat">
             <div class="chat__users">
                 <div class="chat-users">
-                    <div class="chat-users__list">
-                        <div class="chat-users__list-title">Сейчас онлайн:</div>
-                        <ul id="userList"></ul>
+                    <div class="chat-users__title">
+                        Online: 
+                        <span class="chat-users__title-count" id="userCount"></span>
                     </div>
+                    <ul class="chat-users__list" id="userList"></ul>
                 </div>
             </div>
 
@@ -26,8 +27,8 @@ export default class ChatSreen extends BaseScreen {
             
             <div class="chat__send-form">
                 <form class="chat-send-form" name="chatSend">
-                    <input class="chat-send-form__field" type="text" name="message" placeholder="сообщение..."/>
-                    <button class="chat-send-form__btn-send" type="submit"/>Отправить</button>
+                    <input class="chat-send-form__field" type="text" name="message" placeholder="Message..."/>
+                    <button class="chat-send-form__btn-send" type="submit"/>Send</button>
                 </form>
             </div>
         </div>`;
@@ -42,7 +43,7 @@ export default class ChatSreen extends BaseScreen {
                 var outgoingMessage = this.message.value;
                 sendToServer({
                     action: "chatMessageSend",
-                    username: User.username(),
+                    username: User.getUsername(),
                     outgoingMessage: outgoingMessage
                 });
                 this.message.value = '';

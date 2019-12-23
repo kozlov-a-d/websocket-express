@@ -1,10 +1,9 @@
 import BaseScreen from '../base-screen.js';
 import {sendToServer} from '../../globals/socket.js';
-import User from '../../globals/user.js';
 
 export default class AuthSreen extends BaseScreen {
-    constructor() {
-        super();
+    constructor(user) {
+        super(user);
     }
 
     beforeInit(){
@@ -23,19 +22,20 @@ export default class AuthSreen extends BaseScreen {
 
     afterInit(){
         this.root.getElementsByClassName('auth-fullscreen')[0].classList.add('a-is-show');
-
         // отправить сообщение из формы authorization 
         document.forms.authorization.onsubmit = function() {
             if ( this.name.value !== '' ) {
-                console.log('AuthData', {
-                    clientId: User.clientId(),
-                    username: this.name.value
-                }); 
-                sendToServer({
-                    action: "userAuthRequest",  
-                    username: this.name.value,
-                    clientId: User.clientId()
-                });
+                console.log(this.user);
+                console.log('--------------------');
+                // console.log('AuthData', {
+                //     clientId: this.user.getClientId(),
+                //     username: this.name.value
+                // }); 
+                // sendToServer({
+                //     action: "userAuthRequest",  
+                //     username: this.name.value,
+                //     clientId: this.user.getClientId()
+                // });
             }
             return false;
         };
