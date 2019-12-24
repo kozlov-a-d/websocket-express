@@ -4,6 +4,7 @@ import {sendToServer} from '../../globals/socket.js';
 export default class AuthSreen extends BaseScreen {
     constructor(user) {
         super(user);
+        console.log(user);
     }
 
     beforeInit(){
@@ -21,21 +22,22 @@ export default class AuthSreen extends BaseScreen {
     }
 
     afterInit(){
+        let _self = this;
         this.root.getElementsByClassName('auth-fullscreen')[0].classList.add('a-is-show');
         // отправить сообщение из формы authorization 
         document.forms.authorization.onsubmit = function() {
             if ( this.name.value !== '' ) {
-                console.log(this.user);
+                console.log(_self.user);
                 console.log('--------------------');
-                // console.log('AuthData', {
-                //     clientId: this.user.getClientId(),
-                //     username: this.name.value
-                // }); 
-                // sendToServer({
-                //     action: "userAuthRequest",  
-                //     username: this.name.value,
-                //     clientId: this.user.getClientId()
-                // });
+                console.log('AuthData', {
+                    clientId: _self.user.getClientId(),
+                    username: this.name.value
+                }); 
+                sendToServer({
+                    action: "userAuthRequest",  
+                    username: this.name.value,
+                    clientId: _self.user.getClientId()
+                });
             }
             return false;
         };

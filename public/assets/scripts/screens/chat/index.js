@@ -1,6 +1,6 @@
 import BaseScreen from '../base-screen.js';
 import {sendToServer} from '../../globals/socket.js';
-import User from '../../globals/user.js';
+// import User from '../../globals/user.js';
 
 export default class ChatSreen extends BaseScreen {
     constructor(user) {
@@ -35,6 +35,7 @@ export default class ChatSreen extends BaseScreen {
     }
 
     afterInit(){
+        let _self = this;
         this.root.getElementsByClassName('chat')[0].classList.add('a-is-show');
 
         // отправить сообщение из формы authorization 
@@ -43,7 +44,7 @@ export default class ChatSreen extends BaseScreen {
                 var outgoingMessage = this.message.value;
                 sendToServer({
                     action: "chatMessageSend",
-                    username: User.getUsername(),
+                    username: _self.user.getUsername(),
                     outgoingMessage: outgoingMessage
                 });
                 this.message.value = '';

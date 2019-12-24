@@ -8,7 +8,7 @@
       "chatMessages"
       "chatForm";
     height: 100vh;
-    max-width: 100vh;
+    max-width: 100vw;
 }
 @media (min-width: 820px) {
     .chat{
