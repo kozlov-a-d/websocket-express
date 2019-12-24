@@ -2,7 +2,7 @@
 
 import User from './common/user.js';
 import Interaction from './common/interaction.js';
-import modules from './modules/index.js';
+import Modules from './modules/index.js';
 
 export default class App {
     constructor(){
@@ -22,7 +22,7 @@ export default class App {
          * умеет переключать модуль
          * там же получать список экшенов? 
          */
-        this.modules = modules(this.user); 
+        this.modules = new Modules(this.user); 
         // this.modules.activateModule('module_name')
         // this.modules.list[key].actions[key]
 
