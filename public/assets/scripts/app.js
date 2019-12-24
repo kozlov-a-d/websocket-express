@@ -17,10 +17,10 @@ export default class App {
         }
 
         ScreensManager.init(this.user);
-        // ScreensManager.changeScreensByName('GameScreen');
-        setTimeout(() => {
-            ScreensManager.changeScreensByName('AuthorizeScreen');
-        }, 1000);
+        ScreensManager.changeScreensByName('GameScreen');
+        // setTimeout(() => {
+        //     ScreensManager.changeScreensByName('AuthorizeScreen');
+        // }, 1000);
     }
 
 }

@@ -1,5 +1,5 @@
 import BaseScreen from '../base-screen.js';
-import Game from './game.js';
+import Game from './game/index.js';
 
 export default class GameSreen extends BaseScreen {
     constructor(user) {
