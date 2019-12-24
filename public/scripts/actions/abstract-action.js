@@ -1,7 +1,7 @@
 'use strict'
 
 import {sendToServer} from '../globals/socket.js';
-import ModulesManager from '../modules/index.js';
+import ModulesManager from '../modules/modules-manager.js';
 
 export default class AbstractAction {
     constructor(user) {

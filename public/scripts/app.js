@@ -2,7 +2,7 @@
 
 import User from './globals/user.js';
 import Router from './router.js';
-import ModulesManager from './modules/index.js';
+import ModulesManager from './modules/modules-manager.js';
 
 export default class App {
     constructor(){

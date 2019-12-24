@@ -10,7 +10,7 @@ export default class LoadingModule extends AbstractModule {
         <div class="loading-fullscreen">
             <div class="loading-fullscreen__container">
                 <div class="loading-fullscreen__img">
-                    <img src="assets/images/loader.svg" alt="loading">
+                    <img src="images/loader.svg" alt="loading">
                 </div>
                 <div class="loading-fullscreen__text">Loading</div>
             </div>
