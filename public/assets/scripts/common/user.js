@@ -44,5 +44,4 @@ export default class User {
     setUsername(value) {
         this.username = value;
     }
-
 }

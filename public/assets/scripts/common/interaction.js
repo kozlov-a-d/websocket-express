@@ -1,34 +1,24 @@
-'use strict'
-
-import {socket} from './globals/socket.js';
-import Actions from './actions/index.js'; 
-
-export default class Router {
-    constructor(user) {
-        this.socket = socket;
-        this.user = user;
-        this.actions = Actions(this.user);
-        this.init(this);
+export default class Interaction {
+    constructor(actions) {
+        this.actions = actions;
+        this.socket = new WebSocket("ws://localhost:8081");
     }
 
-    init(self) {
-        // обработчик входящих сообщений
+    init() {
+        document.addEventListener('sendToServer', (event) => {
+            this.onSend(event.data)
+        })
+        
         this.socket.onmessage = (event) => {
-            self.doAction(event.data);
+            this.onRecive(event.data)
         };
     }
 
-    parseRequest(str) {
-        let data = false;
-        try {
-            data = JSON.parse(str)
-        } catch(e) {
-            console.error('Ошибка при парсинге ', e);
-        }
-        return data;
+    onSend(data) {
+        this.socket.send(JSON.stringify(data));
     }
-    
-    doAction(response) {
+
+    onRecive(data) {
         let data = this.parseRequest(response) // Вдруг прилетел неправильный json
         console.log('пришла дата ', data);
         if( data ) {
@@ -44,5 +34,15 @@ export default class Router {
         } else {
             ws.send( JSON.stringify(errors['400']));
         }
+    }
+
+    parseRequest(str) {
+        let data = false;
+        try {
+            data = JSON.parse(str)
+        } catch(e) {
+            console.error('Ошибка при парсинге ', e);
+        }
+        return data;
     }
 }
