@@ -1,7 +1,7 @@
-import BaseScreen from '../base-screen.js';
+import AbstractModule from '../abstract-module.js';
 import Game from './game/index.js';
 
-export default class GameSreen extends BaseScreen {
+export default class GameModule extends AbstractModule {
     constructor(user) {
         super(user);
     }

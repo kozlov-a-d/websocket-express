@@ -1,4 +1,4 @@
-export default class BaseScreen {
+export default class AbstractModule {
     constructor(user) {
         this.isActive = false;
         this.root = document.getElementById('app');

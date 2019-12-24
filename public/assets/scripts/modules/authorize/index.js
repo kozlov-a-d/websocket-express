@@ -1,7 +1,7 @@
-import BaseScreen from '../base-screen.js';
+import AbstractModule from '../abstract-module.js';
 import {sendToServer} from '../../globals/socket.js';
 
-export default class AuthSreen extends BaseScreen {
+export default class AuthModule extends AbstractModule {
     constructor(user) {
         super(user);
         console.log(user);

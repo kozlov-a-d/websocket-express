@@ -11,7 +11,7 @@ export default class UserAuthResponse extends AbstractAction {
         if ( response.code === 200 ) {
             // если авторизация успешная
             this.user.init(response.data.user);
-            this.screensManager.changeScreensByName('ChatScreen');
+            this.modulesManager.changeModuleByName('ChatModule');
             this.sendToServer({
                 action: "userOnlineListRequest",  
                 data: {}

@@ -1,6 +1,6 @@
-import BaseScreen from '../base-screen.js';
+import AbstractModule from '../abstract-module.js';
 
-export default class LoadingSreen extends BaseScreen {
+export default class LoadingModule extends AbstractModule {
     constructor(user) {
         super(user);
     }

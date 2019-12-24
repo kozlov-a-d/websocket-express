@@ -2,7 +2,7 @@
 
 import User from './globals/user.js';
 import Router from './router.js';
-import ScreensManager from './screens/index.js';
+import ModulesManager from './modules/index.js';
 
 export default class App {
     constructor(){
@@ -16,11 +16,11 @@ export default class App {
             document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
         }
 
-        ScreensManager.init(this.user);
-        ScreensManager.changeScreensByName('GameScreen');
-        // setTimeout(() => {
-        //     ScreensManager.changeScreensByName('AuthorizeScreen');
-        // }, 1000);
+        ModulesManager.init(this.user);
+        // ModulesManager.changeModuleByName('GameModule');
+        setTimeout(() => {
+            ModulesManager.changeModuleByName('AuthorizeModule');
+        }, 1000);
     }
 
 }
