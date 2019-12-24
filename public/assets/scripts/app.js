@@ -23,6 +23,7 @@ export default class App {
          * там же получать список экшенов? 
          */
         this.modules = new Modules(this.user); 
+        console.log(this.modules)
         // this.modules.activateModule('module_name')
         // this.modules.list[key].actions[key]
 

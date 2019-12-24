@@ -1,7 +1,9 @@
-import LoginModule from './login';
+import LoginModule from './login/index.js';
 
 export default class Modules {
-    constructor(user) {
-        
+    constructor() {
+        this.list = {
+            login: new LoginModule()
+        }
     }
 } 

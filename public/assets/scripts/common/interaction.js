@@ -14,12 +14,12 @@ export default class Interaction {
         };
     }
 
-    onSend(data) {
-        this.socket.send(JSON.stringify(data));
+    onSend(newData) {
+        this.socket.send(JSON.stringify(newData));
     }
 
-    onRecive(data) {
-        let data = this.parseRequest(response) // Вдруг прилетел неправильный json
+    onRecive(newData) {
+        let data = this.parseRequest(newData) // Вдруг прилетел неправильный json
         console.log('пришла дата ', data);
         if( data ) {
             // проверяем есть ли нужный action
