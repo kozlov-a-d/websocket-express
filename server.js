@@ -17,8 +17,8 @@ webSocketServer.on('connection', function(ws) {
     console.log("[log][connection] новое соединение " + id);
 
     ws.send( JSON.stringify({
-        action: 'clientIdResponse',
-        code: 200,           
+        action: 'clientID',
+        code: 200,
         data: {
             id: id
         },

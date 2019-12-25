@@ -4,7 +4,6 @@ import {sendToServer} from '../../globals/socket.js';
 export default class AuthModule extends AbstractModule {
     constructor(user) {
         super(user);
-        console.log(user);
     }
 
     beforeInit(){

@@ -2,7 +2,7 @@
 
 import AbstractAction from './abstract-action.js';
 
-export default class ClientIdResponse extends AbstractAction {
+export default class receiveClientID extends AbstractAction {
     constructor(user) {
         super(user);
     }
